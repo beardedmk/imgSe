@@ -20,8 +20,10 @@ list.appendChild(emptyMessage);
 
 // Function to handle image search
 const searchHandle = (queryText, pageNo) => {
+  if(queryText==""){
+    return
+  }
   const searchURL = `https://api.unsplash.com/search/photos?client_id=${UNSPLASH_CLIENT_ID}&page=${pageNo}&query=${queryText}`;
-
   const fetchImages = async () => {
     const response = await fetch(searchURL);
     const data = await response.json();
@@ -95,10 +97,6 @@ const populate = (data) => {
     listItems.appendChild(item);
   });
 };
-
-//function to handle cateogty click
-
-const category = () => {};
 
 // Function to clear previous images
 const clearPreviousImages = () => {
